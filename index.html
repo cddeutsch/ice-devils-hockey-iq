@@ -52,6 +52,34 @@ h1 {
   font-size:18px;
 }
 
+.principle {
+  max-width:900px;
+  margin:22px auto 5px;
+  padding:0 18px;
+}
+
+.principle-box {
+  background:var(--navy);
+  color:white;
+  border-radius:14px;
+  padding:20px;
+  text-align:center;
+  box-shadow:0 5px 18px rgba(16,47,87,.10);
+}
+
+.principle-label {
+  color:var(--gold);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.3px;
+}
+
+.principle-text {
+  font-size:26px;
+  font-weight:800;
+  margin-top:5px;
+}
+
 nav {
   display:flex;
   gap:9px;
@@ -84,9 +112,9 @@ main {
 .intro {
   text-align:center;
   color:var(--muted);
-  max-width:680px;
-  margin:5px auto 25px;
-  line-height:1.5;
+  max-width:720px;
+  margin:5px auto 28px;
+  line-height:1.55;
 }
 
 .card {
@@ -106,23 +134,34 @@ main {
   padding:26px;
 }
 
-.eyebrow {
-  font-size:12px;
+.tags {
+  display:flex;
+  gap:6px;
+  flex-wrap:wrap;
+  margin-bottom:10px;
+}
+
+.tag {
+  font-size:11px;
   font-weight:800;
-  letter-spacing:1.2px;
-  color:var(--navy);
+  letter-spacing:.8px;
   text-transform:uppercase;
+  background:#eaf0f7;
+  color:var(--navy);
+  padding:6px 9px;
+  border-radius:999px;
+}
+
+.concept {
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+  margin-bottom:5px;
 }
 
 h2 {
   font-size:28px;
-  margin:8px 0 5px;
-}
-
-.meta {
-  font-weight:700;
-  color:var(--muted);
-  margin-bottom:18px;
+  margin:5px 0 14px;
 }
 
 .description {
@@ -147,14 +186,35 @@ h2 {
 }
 
 .watch li {
-  margin:7px 0;
-  line-height:1.4;
+  margin:8px 0;
+  line-height:1.45;
 }
 
-.goal-id {
-  font-size:14px;
+.goal-box {
+  background:#fff8d8;
+  border:1px solid #f1d86d;
+  border-radius:10px;
+  padding:15px 17px;
+  margin:20px 0 14px;
+}
+
+.goal-label {
+  color:var(--navy);
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.goal-name {
+  font-size:19px;
+  font-weight:800;
+  margin-top:4px;
+}
+
+.goal-context {
+  font-size:13px;
   color:var(--muted);
-  margin:18px 0 12px;
+  margin-top:4px;
 }
 
 .actions {
@@ -206,13 +266,21 @@ footer {
   <p class="sub">See it. Understand it. Apply it.</p>
 </header>
 
+<section class="principle">
+  <div class="principle-box">
+    <div class="principle-label">ICE DEVILS PRINCIPLE</div>
+    <div class="principle-text">When the puck moves, you move.</div>
+  </div>
+</section>
+
 <nav id="filters"></nav>
 
 <main>
 
 <p class="intro">
-Real NHL examples to help us see positioning, spacing, decision-making and team concepts.
-Focus on the lesson—not just the puck.
+Watch how NHL players create space, support the puck, defend without puck-watching,
+and make quick team-first decisions. Don't just watch the goal. Watch what every
+player does to create it — or allow it to happen.
 </p>
 
 <div id="library"></div>
@@ -220,93 +288,206 @@ Focus on the lesson—not just the puck.
 </main>
 
 <footer>
-Montgomery Ice Devils 11U AA · Teaching resource
+Montgomery Ice Devils 11U AA · Hockey IQ Teaching Library
 </footer>
 
 <script>
 
-/*
-=================================================================
-ICE DEVILS GOAL LIBRARY
-
-THIS IS THE SECTION TO EDIT.
-
-To add another lesson:
-
-1. Copy one complete lesson from { through },
-2. Paste it underneath the existing lesson.
-3. Change the title, category, description, Watch For items,
-   NHL links and other information.
-4. Commit the change in GitHub.
-
-You shouldn't need to touch anything else on the site.
-=================================================================
-*/
-
 const lessons = [
 
-  {
-    title: "Finding Space Away From the Puck",
+{
+  title: "Support Low, Then Attack the Net",
+  categories: ["Offense", "Team Play"],
+  concept: "Offensive-zone support and triangle positioning",
 
-    category: "Offense",
+  description:
+    "Good support changes as the puck moves. The forwards first support the puck low in the corner. When the puck goes back to the defense, they immediately move into useful ice and create multiple options around the net.",
 
-    concept: "Offensive-zone positioning",
+  watchFor: [
+    "How close are the supporting forwards when the puck is in the corner?",
+    "As soon as the puck goes back to the D, watch how quickly the forwards change positions instead of standing still.",
+    "Notice the triangle around the net. The players spread out and create passing, shooting and rebound options."
+  ],
 
-    description:
-      "Don't just watch the puck. Watch how the forwards maintain separation as the play develops and where open ice appears.",
+  goal: "Scott Laughton — 8:44, 1st period",
+  context: "Los Angeles vs. Anaheim",
+  gamecenterLink: "https://www.nhl.com/gamecenter/ana-vs-lak/2026/09/26/2026010052",
+  visualizerLink: "https://www.nhl.com/ppt-replay/goal/2026010052/215"
+},
 
-    watchFor: [
-      "Where are the forwards positioned as the play develops?",
-      "How does the weak-side forward find open ice?",
-      "What happens to the defenders as the puck changes sides?"
-    ],
+{
+  title: "Turnover to Triangle",
+  categories: ["Offense", "Defense"],
+  concept: "Puck management, spacing and quick puck movement",
 
-    game: "Seattle vs. Vancouver",
+  description:
+    "One team's mistake becomes the other team's opportunity. Anaheim fails to clear the zone. Los Angeles immediately spreads out, maintains its offensive shape and moves the puck before the defense can recover.",
 
-    date: "Sept. 26, 2026",
+  watchFor: [
+    "Defense: the first job is to get the puck out. What safer option was available on the failed clear?",
+    "After the turnover, the attackers separate instead of chasing the puck. That forces the defense to cover more ice.",
+    "Watch how quickly the Kings recognize the open player and move the puck. The pass is more dangerous than trying to beat another defender individually.",
+    "When possession changes, both teams have to react immediately."
+  ],
 
-    goalLabel: "Goal Visualizer example · goal 469",
+  goal: "Mats Zuccarello — 8:56, 2nd period",
+  context: "Los Angeles vs. Anaheim",
+  gamecenterLink: "https://www.nhl.com/gamecenter/ana-vs-lak/2026/09/26/2026010052",
+  visualizerLink: "https://www.nhl.com/ppt-replay/goal/2026010052/596"
+},
 
-    gamecenterLink:
-      "https://www.nhl.com/gamecenter/sea-vs-van/2026/09/26/2026010056/summary",
+{
+  title: "No Space? Move It and Move Yourself",
+  categories: ["Offense", "Team Play"],
+  concept: "Puck support, using the point and net-front presence",
 
-    visualizerLink:
-      "https://www.nhl.com/ppt-replay/goal/2026010056/469"
-  }
+  description:
+    "The puck carrier has no clean play low, so he doesn't force one. The Kings use a hard reverse to move the puck away from pressure, then reposition immediately as the puck goes high.",
+
+  watchFor: [
+    "Don't force it. With no clean play in the corner, the forward uses the boards to move the puck away from pressure.",
+    "Watch the center move low to high to support the defenseman. His job changes when the puck moves.",
+    "Anaheim's winger gets caught too low and leaves the point uncovered.",
+    "While the puck goes high, Turcotte gets to the net instead of drifting toward the puck."
+  ],
+
+  goal: "Alex Turcotte — 1:39, 3rd period",
+  context: "Los Angeles vs. Anaheim",
+  gamecenterLink: "https://www.nhl.com/gamecenter/ana-vs-lak/2026/09/26/2026010052",
+  visualizerLink: "https://www.nhl.com/ppt-replay/goal/2026010052/842"
+},
+
+{
+  title: "Regroup, Keep Your Shape, Attack Open Ice",
+  categories: ["Transition", "Offense"],
+  concept: "Neutral-zone regroup, spacing and recognizing open ice",
+
+  description:
+    "Ottawa doesn't force the puck straight ahead. They regroup, get organized and move up ice with support. Their spacing creates options and gives Yakemchuk room to recognize a lane and attack it.",
+
+  watchFor: [
+    "Watch Ottawa use the neutral zone to get organized instead of forcing the puck forward.",
+    "The attackers stay separated and maintain a triangle as they move up ice. Nobody follows the puck carrier into the same space.",
+    "Yakemchuk recognizes open ice and attacks it instead of assuming a defenseman must stay at the blue line.",
+    "Montreal gets focused on the puck and loses the open player. Know where the puck is — but also know where your player is."
+  ],
+
+  goal: "Carter Yakemchuk — 11:12, 2nd period",
+  context: "Ottawa vs. Montreal · Power play",
+  gamecenterLink: "https://www.nhl.com/gamecenter/ott-vs-mtl/2026/09/26/2026010064",
+  visualizerLink: "https://www.nhl.com/ppt-replay/goal/2026010064/596"
+},
+
+{
+  title: "Give Your Defense an Outlet",
+  categories: ["Defense", "Team Play"],
+  concept: "Breakout support, puck management and forechecking",
+
+  description:
+    "A breakout is a five-player job. Columbus' forecheck creates pressure, Detroit has limited support, and the outlet becomes a turnover that quickly ends up in the net.",
+
+  watchFor: [
+    "Before blaming the player who turns it over, look at his options. Is a teammate presenting a safe, usable outlet?",
+    "Under pressure, don't force a dangerous pass. Protect it, use the wall, reverse it or make the simple play.",
+    "The forechecker doesn't always have to steal the puck. Pressure takes away time and can force the mistake.",
+    "Once the turnover happens, Columbus reacts immediately and attacks before Detroit can recover."
+  ],
+
+  goal: "Valeri Nichushkin — 18:44, 1st period",
+  context: "Columbus vs. Detroit",
+  gamecenterLink: "https://www.nhl.com/gamecenter/cbj-vs-det/2026/09/26/2026010061",
+  visualizerLink: "https://www.nhl.com/ppt-replay/goal/2026010061/375"
+},
+
+{
+  title: "Attack With Speed, Fill Different Lanes",
+  categories: ["Transition", "Offense"],
+  concept: "Rush spacing, driving the net and finding open ice",
+
+  description:
+    "Columbus attacks with speed, but the forwards don't all attack the same space. One player drives toward the net while Williams stays higher in open ice. That separation makes the rush much harder to defend.",
+
+  watchFor: [
+    "Attack with speed. The rush doesn't give Detroit time to get organized.",
+    "Don't all go to the puck. One player drives the net while Williams fills the open space behind the play.",
+    "Different lanes create different threats and give the puck carrier options.",
+    "Defense: getting back isn't enough. Identify the dangerous players and communicate before someone is left open."
+  ],
+
+  goal: "Jack Williams — 3:55, 2nd period",
+  context: "Columbus vs. Detroit",
+  gamecenterLink: "https://www.nhl.com/gamecenter/cbj-vs-det/2026/09/26/2026010061",
+  visualizerLink: "https://www.nhl.com/ppt-replay/goal/2026010061/500"
+},
+
+{
+  title: "Take the Ice, Then Make the Simple Play",
+  categories: ["Transition", "Team Play"],
+  concept: "Breakout support, attacking space and passing off the rush",
+
+  description:
+    "Columbus gives Detroit room to break out, so Detroit takes the available ice. The puck carrier doesn't try to beat everyone himself. He moves the puck to the winger and the attack continues toward the net.",
+
+  watchFor: [
+    "Take the ice you're given. With little pressure on the breakout, Detroit gets moving quickly.",
+    "The puck carrier has speed and space but doesn't try to dangle through the defense. He finds the open teammate.",
+    "After the puck moves, Rasmussen keeps moving and goes hard to the net to become a passing option.",
+    "Defense: Columbus follows the puck and nobody picks up the player going to the net."
+  ],
+
+  goal: "Michael Rasmussen — 14:19, 3rd period",
+  context: "Detroit vs. Columbus",
+  gamecenterLink: "https://www.nhl.com/gamecenter/cbj-vs-det/2026/09/26/2026010061",
+  visualizerLink: "https://www.nhl.com/ppt-replay/goal/2026010061/1016"
+},
+
+{
+  title: "Clear It — or Make Them Pay",
+  categories: ["Defense", "Offense"],
+  concept: "Failed clears, offensive shape and net-front presence",
+
+  description:
+    "Philadelphia has an opportunity to relieve pressure but sends the puck back to Boston. The Bruins keep their offensive shape, find open ice and maintain a player at the net instead of everyone chasing the puck.",
+
+  watchFor: [
+    "Defense: a clear has to get out. A weak clear that stays in the zone can immediately create another scoring chance.",
+    "Boston doesn't collapse toward the puck when it returns high. Players maintain spacing and passing lanes.",
+    "Geekie finds open ice instead of standing next to a teammate.",
+    "Watch No. 18 at the net. Even without touching the puck, he provides a screen, rebound option and forces the defense to account for him."
+  ],
+
+  goal: "Morgan Geekie — 5:19, 3rd period",
+  context: "Boston vs. Philadelphia · Power play",
+  gamecenterLink: "https://www.nhl.com/gamecenter/bos-vs-phi/2026/09/26/2026010028",
+  visualizerLink: "https://www.nhl.com/ppt-replay/goal/2026010028/918"
+}
 
 ];
 
-
-/*
-=================================================================
-SITE CODE BELOW
-You generally don't need to edit anything below this point.
-=================================================================
-*/
-
-const categories = [
+const categoryOrder = [
   "All",
-  ...new Set(lessons.map(x => x.category))
+  "Offense",
+  "Defense",
+  "Transition",
+  "Team Play"
 ];
 
 const filters = document.getElementById("filters");
 const library = document.getElementById("library");
 
-
 function renderFilters(active = "All") {
 
-  filters.innerHTML = categories.map(c =>
+  filters.innerHTML = categoryOrder.map(c =>
 
     `<button
       class="filter ${c === active ? 'active' : ''}"
-      onclick="render('${c.replaceAll("'","\\'")}')">
+      onclick="render('${c}')">
       ${c}
     </button>`
 
   ).join("");
 
 }
-
 
 function render(active = "All") {
 
@@ -315,8 +496,7 @@ function render(active = "All") {
   const shown =
     active === "All"
       ? lessons
-      : lessons.filter(x => x.category === active);
-
+      : lessons.filter(x => x.categories.includes(active));
 
   library.innerHTML = shown.map(x => `
 
@@ -326,15 +506,13 @@ function render(active = "All") {
 
       <div class="content">
 
-        <div class="eyebrow">
-          ${x.category} · ${x.concept}
+        <div class="tags">
+          ${x.categories.map(c => `<span class="tag">${c}</span>`).join("")}
         </div>
+
+        <div class="concept">${x.concept}</div>
 
         <h2>${x.title}</h2>
-
-        <div class="meta">
-          ${x.game} · ${x.date}
-        </div>
 
         <div class="description">
           ${x.description}
@@ -350,8 +528,10 @@ function render(active = "All") {
 
         </div>
 
-        <div class="goal-id">
-          <strong>On NHL.com:</strong> ${x.goalLabel}
+        <div class="goal-box">
+          <div class="goal-label">WHICH GOAL?</div>
+          <div class="goal-name">${x.goal}</div>
+          <div class="goal-context">${x.context}</div>
         </div>
 
         <div class="actions">
@@ -375,8 +555,8 @@ function render(active = "All") {
         </div>
 
         <div class="note">
-          Use Gamecenter for the full NHL interface and controls.
-          Quick visualizer opens the standalone tracking view.
+          In Gamecenter, find the goal listed above and select
+          <strong>Goal Visualizer</strong>. Use Gamecenter for the full controls.
         </div>
 
       </div>
@@ -386,7 +566,6 @@ function render(active = "All") {
   `).join("");
 
 }
-
 
 render();
 
