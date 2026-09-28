@@ -1,31 +1,396 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ice Devils 11U AA Hockey IQ</title>
+
 <style>
-:root{--navy:#102d54;--gold:#ffc914;--ice:#f5f8fc;--ink:#162235;--muted:#667085}
-*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--ice)}
-header{background:var(--navy);color:white;padding:24px 20px;border-bottom:6px solid var(--gold)}
-.brand{max-width:980px;margin:auto;display:flex;align-items:center;gap:18px}.brand img{width:92px;height:92px;object-fit:contain;background:white;border-radius:50%;padding:4px}.brand h1{margin:0;font-size:clamp(26px,5vw,44px)}.brand p{margin:5px 0 0;color:#e7eef8;font-size:17px}
-main{max-width:980px;margin:26px auto;padding:0 18px 50px}.intro{font-size:18px;line-height:1.5;max-width:760px}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.chip{border:1px solid #ccd5e2;background:white;border-radius:999px;padding:9px 14px;font-weight:700;color:var(--navy)}.chip.active{background:var(--navy);color:white;border-color:var(--navy)}
-.card{background:white;border-radius:16px;overflow:hidden;box-shadow:0 5px 18px rgba(16,45,84,.10);border:1px solid #e4e9f0}.stripe{height:8px;background:var(--gold)}.content{padding:26px}.eyebrow{font-size:13px;font-weight:800;letter-spacing:.08em;color:#52637a}.content h2{font-size:29px;margin:8px 0 12px;color:var(--navy)}.lead{font-size:18px;line-height:1.5;margin:0 0 22px}.watch{background:#f4f7fb;border-left:5px solid var(--gold);padding:16px 18px;margin:20px 0}.watch strong{color:var(--navy)}.watch ol{margin:10px 0 0;padding-left:22px;line-height:1.55}.button{display:inline-block;background:var(--gold);color:#102d54;text-decoration:none;font-weight:900;padding:14px 19px;border-radius:9px;margin-top:4px}.button:hover{filter:brightness(.96)}.meta{margin:18px 0 0;color:var(--muted);font-size:14px}.note{margin-top:28px;color:var(--muted);font-size:14px;line-height:1.5}
-@media(max-width:560px){header{padding:18px 14px}.brand img{width:72px;height:72px}.content{padding:20px}.content h2{font-size:25px}}
+:root {
+  --navy:#102f57;
+  --gold:#ffca05;
+  --ink:#122033;
+  --muted:#637083;
+  --bg:#f5f7fa;
+  --white:#fff;
+}
+
+* { box-sizing:border-box; }
+
+body {
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+}
+
+header {
+  background:var(--navy);
+  color:white;
+  text-align:center;
+  padding:30px 20px 25px;
+  border-bottom:7px solid var(--gold);
+}
+
+.logo {
+  width:145px;
+  height:145px;
+  object-fit:contain;
+  background:white;
+  border-radius:50%;
+  padding:7px;
+}
+
+h1 {
+  margin:12px 0 4px;
+  font-size:clamp(28px,5vw,44px);
+}
+
+.sub {
+  margin:0;
+  color:#dce6f2;
+  font-size:18px;
+}
+
+nav {
+  display:flex;
+  gap:9px;
+  justify-content:center;
+  flex-wrap:wrap;
+  padding:20px 15px 5px;
+}
+
+.filter {
+  border:1px solid #c9d1db;
+  background:white;
+  border-radius:999px;
+  padding:9px 16px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.filter.active {
+  background:var(--navy);
+  color:white;
+  border-color:var(--navy);
+}
+
+main {
+  max-width:900px;
+  margin:0 auto;
+  padding:20px 18px 60px;
+}
+
+.intro {
+  text-align:center;
+  color:var(--muted);
+  max-width:680px;
+  margin:5px auto 25px;
+  line-height:1.5;
+}
+
+.card {
+  background:white;
+  border-radius:16px;
+  box-shadow:0 5px 18px rgba(16,47,87,.10);
+  overflow:hidden;
+  margin:0 0 24px;
+}
+
+.card-top {
+  height:7px;
+  background:var(--gold);
+}
+
+.content {
+  padding:26px;
+}
+
+.eyebrow {
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.2px;
+  color:var(--navy);
+  text-transform:uppercase;
+}
+
+h2 {
+  font-size:28px;
+  margin:8px 0 5px;
+}
+
+.meta {
+  font-weight:700;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.description {
+  font-size:17px;
+  line-height:1.55;
+}
+
+.watch {
+  background:#f4f7fb;
+  border-left:5px solid var(--gold);
+  padding:16px 18px;
+  margin:20px 0;
+}
+
+.watch strong {
+  color:var(--navy);
+}
+
+.watch ol {
+  margin:10px 0 0;
+  padding-left:22px;
+}
+
+.watch li {
+  margin:7px 0;
+  line-height:1.4;
+}
+
+.goal-id {
+  font-size:14px;
+  color:var(--muted);
+  margin:18px 0 12px;
+}
+
+.actions {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+
+.primary {
+  display:inline-block;
+  background:var(--gold);
+  color:#10233e;
+  text-decoration:none;
+  font-weight:800;
+  padding:13px 18px;
+  border-radius:8px;
+}
+
+.secondary {
+  display:inline-block;
+  color:var(--navy);
+  font-weight:700;
+  text-decoration:none;
+  padding:12px 5px;
+}
+
+.note {
+  font-size:13px;
+  color:var(--muted);
+  margin-top:12px;
+  line-height:1.4;
+}
+
+footer {
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+  padding:0 15px 35px;
+}
 </style>
 </head>
+
 <body>
-<header><div class="brand"><img src="logo.png" alt="Montgomery Youth Hockey logo"><div><h1>11U AA Hockey IQ</h1><p>See it. Understand it. Apply it.</p></div></div></header>
+
+<header>
+  <img src="logo.png" alt="Montgomery Ice Devils logo" class="logo">
+  <h1>11U AA Hockey IQ</h1>
+  <p class="sub">See it. Understand it. Apply it.</p>
+</header>
+
+<nav id="filters"></nav>
+
 <main>
-<p class="intro">A library of NHL examples selected to help Ice Devils players see positioning, spacing and decision-making away from the puck.</p>
-<div class="filters"><span class="chip active">All</span><span class="chip">Offense</span><span class="chip">Defense</span><span class="chip">Transition</span><span class="chip">Forecheck</span><span class="chip">Special Teams</span></div>
-<article class="card"><div class="stripe"></div><div class="content">
-<div class="eyebrow">OFFENSE · POSITIONING AWAY FROM THE PUCK</div>
-<h2>Finding Space Away From the Puck</h2>
-<p class="lead">Don't just watch the puck. Watch how the forwards maintain separation as the play develops and how open ice changes as defenders react.</p>
-<div class="watch"><strong>WATCH FOR</strong><ol><li>Where are all three forwards as the play develops?</li><li>How does the weak-side forward create a passing option?</li><li>Where does open ice appear as the defenders move toward the puck?</li></ol></div>
-<a class="button" href="https://www.nhl.com/ppt-replay/goal/2026010056/469" target="_blank" rel="noopener">▶ OPEN NHL GOAL VISUALIZER ↗</a>
-<p class="meta">Seattle vs. Vancouver · Sept. 26, 2026 · NHL Goal Visualizer</p>
-</div></article>
-<p class="note">Goal Visualizers open on NHL.com in a new tab because NHL prevents the interactive visualizer from being embedded on third-party sites.</p>
+
+<p class="intro">
+Real NHL examples to help us see positioning, spacing, decision-making and team concepts.
+Focus on the lesson—not just the puck.
+</p>
+
+<div id="library"></div>
+
 </main>
-</body></html>
+
+<footer>
+Montgomery Ice Devils 11U AA · Teaching resource
+</footer>
+
+<script>
+
+/*
+=================================================================
+ICE DEVILS GOAL LIBRARY
+
+THIS IS THE SECTION TO EDIT.
+
+To add another lesson:
+
+1. Copy one complete lesson from { through },
+2. Paste it underneath the existing lesson.
+3. Change the title, category, description, Watch For items,
+   NHL links and other information.
+4. Commit the change in GitHub.
+
+You shouldn't need to touch anything else on the site.
+=================================================================
+*/
+
+const lessons = [
+
+  {
+    title: "Finding Space Away From the Puck",
+
+    category: "Offense",
+
+    concept: "Offensive-zone positioning",
+
+    description:
+      "Don't just watch the puck. Watch how the forwards maintain separation as the play develops and where open ice appears.",
+
+    watchFor: [
+      "Where are the forwards positioned as the play develops?",
+      "How does the weak-side forward find open ice?",
+      "What happens to the defenders as the puck changes sides?"
+    ],
+
+    game: "Seattle vs. Vancouver",
+
+    date: "Sept. 26, 2026",
+
+    goalLabel: "Goal Visualizer example · goal 469",
+
+    gamecenterLink:
+      "https://www.nhl.com/gamecenter/sea-vs-van/2026/09/26/2026010056/summary",
+
+    visualizerLink:
+      "https://www.nhl.com/ppt-replay/goal/2026010056/469"
+  }
+
+];
+
+
+/*
+=================================================================
+SITE CODE BELOW
+You generally don't need to edit anything below this point.
+=================================================================
+*/
+
+const categories = [
+  "All",
+  ...new Set(lessons.map(x => x.category))
+];
+
+const filters = document.getElementById("filters");
+const library = document.getElementById("library");
+
+
+function renderFilters(active = "All") {
+
+  filters.innerHTML = categories.map(c =>
+
+    `<button
+      class="filter ${c === active ? 'active' : ''}"
+      onclick="render('${c.replaceAll("'","\\'")}')">
+      ${c}
+    </button>`
+
+  ).join("");
+
+}
+
+
+function render(active = "All") {
+
+  renderFilters(active);
+
+  const shown =
+    active === "All"
+      ? lessons
+      : lessons.filter(x => x.category === active);
+
+
+  library.innerHTML = shown.map(x => `
+
+    <article class="card">
+
+      <div class="card-top"></div>
+
+      <div class="content">
+
+        <div class="eyebrow">
+          ${x.category} · ${x.concept}
+        </div>
+
+        <h2>${x.title}</h2>
+
+        <div class="meta">
+          ${x.game} · ${x.date}
+        </div>
+
+        <div class="description">
+          ${x.description}
+        </div>
+
+        <div class="watch">
+
+          <strong>WATCH FOR</strong>
+
+          <ol>
+            ${x.watchFor.map(i => `<li>${i}</li>`).join("")}
+          </ol>
+
+        </div>
+
+        <div class="goal-id">
+          <strong>On NHL.com:</strong> ${x.goalLabel}
+        </div>
+
+        <div class="actions">
+
+          <a
+            class="primary"
+            href="${x.gamecenterLink}"
+            target="_blank"
+            rel="noopener">
+            OPEN NHL GAMECENTER ↗
+          </a>
+
+          <a
+            class="secondary"
+            href="${x.visualizerLink}"
+            target="_blank"
+            rel="noopener">
+            Quick visualizer ↗
+          </a>
+
+        </div>
+
+        <div class="note">
+          Use Gamecenter for the full NHL interface and controls.
+          Quick visualizer opens the standalone tracking view.
+        </div>
+
+      </div>
+
+    </article>
+
+  `).join("");
+
+}
+
+
+render();
+
+</script>
+
+</body>
+</html>
