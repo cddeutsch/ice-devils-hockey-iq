@@ -95,7 +95,7 @@ function draw(i){idx=Math.max(0,Math.min(current.frames.length-1,Number(i)));let
 function stop(){playing=false;clearInterval(timer);timer=null;if($('play'))$('play').textContent='▶ Play'}function start(){if(idx>=current.frames.length-1)idx=0;playing=true;$('play').textContent='❚❚ Pause';timer=setInterval(()=>{if(idx>=current.frames.length-1){stop();return}draw(idx+1)},100/rate)}
 $('play').onclick=()=>playing?stop():start();$('replay').onclick=()=>{stop();draw(0);start()};$('speed').onchange=e=>{rate=Number(e.target.value);if(playing){clearInterval(timer);timer=setInterval(()=>{if(idx>=current.frames.length-1){stop();return}draw(idx+1)},100/rate)}};$('scrub').oninput=e=>{stop();draw(e.target.value)};
 $('nextPlay').onclick=()=>{let i=LESSONS.findIndex(l=>l.id===current.id);load(LESSONS[(i+1)%LESSONS.length].id,true)};
-const fm=$('faceMarks');[[360,255],[360,769],[2040,255],[2040,769]].forEach(([x,y])=>{let d=`M${x-30} ${y-39}V${y+39} M${x-72} ${y}H${x-30} M${x+30} ${y-39}V${y+39} M${x+30} ${y}H${x+72} M${x-30} ${y-173}V${y-137} M${x+30} ${y-173}V${y-137} M${x-30} ${y+137}V${y+173} M${x+30} ${y+137}V${y+173}`;let p=svgEl('path');p.setAttribute('d',d);p.setAttribute('class','hash');fm.appendChild(p)});
+
 // Homepage starts as a clean play-selection screen.
 cards();
 </script></body></html>
